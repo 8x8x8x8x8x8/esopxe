@@ -13,17 +13,71 @@ body {
 .image-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  align-items: center;
 }
 .row {
   background: #111421;
   border: 1px solid #1f2333;
   border-radius: 12px;
   padding: 12px;
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .row img {
-  display: block;
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+}
+.desc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #b5b5b5;
+  text-align: center;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.popup-content {
+  background: #181b25;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+.popup-header {
+  background: #c71c1c;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 0;
+}
+.popup-body {
+  color: #999;
+  padding: 16px 20px;
+}
+#popupBtn {
+  background: #2a2f46;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+#popupBtn:hover {
+  background: #3b4260;
 }
