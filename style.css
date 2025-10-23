@@ -1,40 +1,26 @@
 :root { color-scheme: dark; }
-
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: #0b0b0f;
   color: #e8e8ef;
 }
-
-header {
-  padding: 18px 20px;
-  border-bottom: 1px solid #222533;
-  background: linear-gradient(180deg, #10121b 0%, #0b0b0f 100%);
-}
-
-h1 { margin: 0 0 6px; font-size: 18px; font-weight: 600; }
-p { opacity: 0.8; font-size: 14px; }
-
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 18px 16px 48px;
+  padding: 20px;
 }
-
 .image-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 .row {
   background: #111421;
   border: 1px solid #1f2333;
   border-radius: 12px;
   padding: 12px;
 }
-
 .row img {
   display: block;
   max-width: 100%;
