@@ -46,7 +46,7 @@ async function loadTxtFile(path) {
 }
 
 async function loadAllTxtFiles() {
-  const txtFiles = ['image.txt', 'image2.txt'];
+  const txtFiles = ['image.txt', 'image1.txt'];
   for (const file of txtFiles) await loadTxtFile(file);
 }
 
