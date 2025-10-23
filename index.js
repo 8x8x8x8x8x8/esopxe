@@ -58,8 +58,8 @@ function setDescription(id, text) {
 const imagesReady = loadAllTxtFiles();
 
 imagesReady.then(() => {
-  setDescription(1, 'skig');
-  setDescription(2, 'skig');
+  setDescription(1, 'Szvy, the diddyblud!');
+  setDescription(2, 'Those who know...');
 });
 
 popupBtn.addEventListener('click', () => popup.style.display = 'none');
