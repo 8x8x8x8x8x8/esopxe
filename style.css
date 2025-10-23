@@ -38,16 +38,20 @@ body {
   color: #b5b5b5;
   text-align: center;
 }
+
+/* Popup styling */
 .popup {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(20px) brightness(0.4);
+  -webkit-backdrop-filter: blur(20px) brightness(0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 10;
 }
 .popup-content {
