@@ -15,34 +15,28 @@ function createRow(dataUrl) {
   return row;
 }
 
-function addImage(u) {
-  if (isDataUrl(u)) imageListEl.appendChild(createRow(u));
-}
-
 function addImages(list) {
-  if (!Array.isArray(list)) return;
   const frag = document.createDocumentFragment();
   for (const u of list) if (isDataUrl(u)) frag.appendChild(createRow(u));
   imageListEl.appendChild(frag);
 }
 
 async function loadTxtFile(path) {
-  const res = await fetch(path, { cache: 'no-store' });
-  if (!res.ok) return;
-  const text = (await res.text()).trim();
-  if (!text) return;
-  const lines = text.split(/\r?\n/).map(s => s.trim()).filter(Boolean).filter(isDataUrl);
-  addImages(lines);
+  try {
+    const res = await fetch(path, { cache: 'no-store' });
+    if (!res.ok) return;
+    const text = (await res.text()).trim();
+    if (!text) return;
+    const lines = text.split(/\r?\n/).map(s => s.trim()).filter(isDataUrl);
+    addImages(lines);
+  } catch (err) {
+    console.error('womp', path, err);
+  }
 }
 
-async function loadTxtFiles(files) {
-  for (const f of files) await loadTxtFile(f);
+async function loadAllTxtFiles() {
+  const txtFiles = ['image.txt', 'image1.txt', 'image2.txt', 'image3.txt', 'image4.txt'];
+  for (const file of txtFiles) await loadTxtFile(file);
 }
 
-const txtFiles = ['image.txt'];
-const developerImages = [];
-
-loadTxtFiles(txtFiles).then(() => addImages(developerImages));
-
-window.addImage = addImage;
-window.addImages = addImages;
+loadAllTxtFiles();
