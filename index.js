@@ -4,20 +4,26 @@ function isDataUrl(s) {
   return typeof s === 'string' && /^data:image\/[a-zA-Z0-9.+-]+;base64,/.test(s.trim());
 }
 
-function createRow(dataUrl) {
+function createRow(dataUrl, index) {
   const row = document.createElement('div');
   row.className = 'row';
   const img = document.createElement('img');
   img.src = dataUrl.trim();
   img.loading = 'lazy';
   img.decoding = 'async';
+  const desc = document.createElement('div');
+  desc.className = 'desc';
+  desc.textContent = 'Image ' + (index + 1);
   row.appendChild(img);
+  row.appendChild(desc);
   return row;
 }
 
 function addImages(list) {
   const frag = document.createDocumentFragment();
-  for (const u of list) if (isDataUrl(u)) frag.appendChild(createRow(u));
+  list.forEach((u, i) => {
+    if (isDataUrl(u)) frag.appendChild(createRow(u, i));
+  });
   imageListEl.appendChild(frag);
 }
 
@@ -29,9 +35,7 @@ async function loadTxtFile(path) {
     if (!text) return;
     const lines = text.split(/\r?\n/).map(s => s.trim()).filter(isDataUrl);
     addImages(lines);
-  } catch (err) {
-    console.error('womp', path, err);
-  }
+  } catch {}
 }
 
 async function loadAllTxtFiles() {
@@ -40,3 +44,7 @@ async function loadAllTxtFiles() {
 }
 
 loadAllTxtFiles();
+
+const popup = document.getElementById('popup');
+const popupBtn = document.getElementById('popupBtn');
+popupBtn.addEventListener('click', () => popup.style.display = 'none');
