@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>test</title>
+<style>
+  body {
+    background: #111;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  img {
+    max-width: 90%;
+    max-height: 80vh;
+    border: 2px solid #fff;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+  <h1>d</h1>
+  <p>|<code>image.txt</code>...</p>
+  <img id="loadedImage" alt="e">
 
+  <script>
+    fetch('image.txt')
+      .then(response => response.text())
+      .then(data => {
+        const img = document.getElementById('loadedImage');
+        img.src = data.trim();
+      })
+      .catch(error => {
+        console.error('Error loading image:', error);
+        document.body.innerHTML += '<p style="color:red;">womp.</p>';
+      });
+  </script>
+</body>
+</html>
